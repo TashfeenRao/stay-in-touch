@@ -18,7 +18,7 @@ RSpec.feature 'Friendships', type: :feature do
     visit users_path
     expect(find('.users-section')).to have_content('Send Friend Request')
     assert_selector 'ul.users-list' do
-      assert_selector '.friend-request'
+      assert_selector '.btn'
       click_link('Send Friend Request', match: :first)
     end
     expect(find('.notice')).to have_content('Send your friend request successfully')
