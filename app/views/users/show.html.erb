@@ -12,7 +12,7 @@
           <%show_pending%>
           <% if @pending%>
           <% @pending.each do |pending|%>
-            <p class="friend-already">pending friended request <%= link_to 'Cancel', {action: "decline",:controller=>"friendships",user_id: pending.user.id }, method: :delete, class: 'btn btn-primary' %></p> 
+            <p class="friend-already">pending friended request <%= link_to 'Cancel', {action: "decline",:controller=>"friendships",user_id: pending.user.id }, method: :delete, class: 'btn btn-primary' %></p>
          <%end%>
          <%end%>
           </span>
@@ -31,14 +31,31 @@
   </article>
 </div>
 <div class="col-md-4">
-  <article class="friend-list">
+  <div class="row">
+    <article class="friend-list">
     <h3>Friend List</h3>
     <ul class="f-list">
       <% @friends.each do |f|%>
         <li class="f-item"> <%= f.user.name %> </li>
       <% end %>
     </ul>
-  </article>
+    </article>
+  </div>
+  <div class="row">
+    <article class="friend-list">
+    <h3>Mutal Friend List</h3>
+    <ul class="f-list">
+      <% show_mutal_friends(@user)%>
+      <% @mutals.each do |f|%>
+        <% if f.user != current_user %>
+          <li class="f-item"> <%= f.user.id %> <%= f.user.name %> </li>
+        <% end %>
+      <% end %>
+    </ul>
+    </article>
+  </div>
+
+
   </div>
 </section>
 </div>

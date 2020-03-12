@@ -1,31 +1,47 @@
 <div class="container">
-<div class="row">
-<div class="col-md-6">
-<%if @request%>
-<h1>Requests List</h1>
-  <ul>
+  <div class="row">
+    <div class="col-md-4">
+      <%if @request%>
+      <h1>Requests List</h1>
+      <ul class="list-group list-group-flush">
+          <%@request.each do |requests|%>
+            <li class="list-group-item">
+              <%= requests.user.name%>
+              <%= link_to 'Accept', {action: "accept",:controller=>"friendships",user_id: requests.user.id }, method: :post, class: 'btn btn-primary' %>
+              <%= link_to 'Decline', {action: "decline",:controller=>"friendships",user_id: requests.user.id }, method: :delete, class: 'btn btn-primary' %>
+            </li>
+          <%end%>
+        </ul>
+      <%end%>
+    </div>
+    <div class="col-md-4">
+      <%show_pending%>
+      <%if @pending%>
+      <h2>Friends List</h2>
+      <ul class="list-group list-group-flush">
+      <%@pending.each do |requests|%>
+        <li class="list-group-item">
+          <%= requests.friend.name%>
+          <%= link_to 'Unfriend', {action: "decline",:controller=>"friendships",user_id: requests.friend.id}, method: :delete, class: 'btn btn-primary' %>
+        </li>
+      <%end%>
+      </ul>
+      <%end%>
+    </div>
+    <div class="col-md-4">
+      <%show_pending%>
+      <%if @pending%>
+      <h2>Mutal Friends List</h2>
+      <ul class="list-group list-group-flush">
+      <%@pending.each do |requests|%>
+        <li class="list-group-item">
+          <%= requests.friend.name%>
+          <%= link_to 'Unfriend', {action: "decline",:controller=>"friendships",user_id: requests.friend.id}, method: :delete, class: 'btn btn-primary' %>
+        </li>
+      <%end%>
+      </ul>
+      <%end%>
+    </div>
 
-    <%@request.each do |requests|%>
-      <li>
-        <h4>
-          <%= requests.user.name%>
-        </h4>
-        <%= link_to 'Accept', {action: "accept",:controller=>"friendships",user_id: requests.user.id }, method: :post, class: 'btn btn-primary' %>
-        <%= link_to 'Decline', {action: "decline",:controller=>"friendships",user_id: requests.user.id }, method: :delete, class: 'btn btn-primary' %>
-      </li>
-    <%end%>
-  </ul>
-<%end%>
-</div>
-<div class="col-md-6">
-<%show_pending%>
-<%if @pending%>
-<h2>Friends pending</h2>
-<%@pending.each do |requests|%>
-<%= requests.friend.name%>
-<%= link_to 'Cancel', {action: "decline",:controller=>"friendships",user_id: requests.user.id}, method: :delete, class: 'btn btn-primary' %>
-<%end%>
-<%end%>
-</div>
-</div>
+  </div>
 </div>

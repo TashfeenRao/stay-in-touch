@@ -22,33 +22,18 @@
                   </span>
                   <% elsif pending_friend user %>
                   <span>
-                    <%show_pending%>
-                    <% if @pending%>
-                    <% @pending.each do |pending|%>
-                    <% if current_user.id == pending.user.id%>
                     <p>Pending request
-                    <%= pending.friend.id%>
-                      <%= link_to 'Cancel', {action: "decline",:controller=>"friendships",user_id: pending.friend.id }, method: :delete, class: 'btn btn-primary' %>
+                    <%= link_to 'Cancel', {action: "decline",:controller=>"friendships",user_id: user.id }, method: :delete, class: 'btn btn-primary' %>
                     </p>
-                    <%end%>
-                    <%end%>
-                    <%end%>
 
                   </span>
                   <% elsif already_friend user %>
-                  <span>
-                    <%show_pending%>
-                    <% if @pending%>
-                    <% @pending.each do |pending|%>
-                    <% if current_user.id == pending.user.id%>
-                    <p>Already Friend
-                      <%= link_to 'Unfriend', {action: "decline",:controller=>"friendships",user_id: pending.user.id }, method: :delete, class: 'btn btn-primary' %>
-                    </p>
-                    <%end%>
-                    <%end%>
-                    <%end%>
-                    <%end%>
-                  </span>
+                    <span>
+                      <p>Already Friend
+                      <%= link_to 'Unfriend', {action: "decline",:controller=>"friendships",user_id: user.id }, method: :delete, class: 'btn btn-primary' %>
+                      </p>
+                    </span>
+                  <%end%>
                 </div>
               </div>
             </div>
