@@ -10,8 +10,8 @@
         <h4>
           <%= requests.user.name%>
         </h4>
-        <%= link_to 'Accept', {action: "accept",:controller=>"friendships",id: requests.id }, method: :post, class: 'btn btn-primary' %>
-        <%= link_to 'Decline', {action: "decline",:controller=>"friendships",id: requests.id }, method: :delete, class: 'btn btn-primary' %>
+        <%= link_to 'Accept', {action: "accept",:controller=>"friendships",user_id: requests.user.id }, method: :post, class: 'btn btn-primary' %>
+        <%= link_to 'Decline', {action: "decline",:controller=>"friendships",user_id: requests.user.id }, method: :delete, class: 'btn btn-primary' %>
       </li>
     <%end%>
   </ul>
@@ -23,7 +23,7 @@
 <h2>Friends pending</h2>
 <%@pending.each do |requests|%>
 <%= requests.friend.name%>
-<%= link_to 'Cancel', {action: "decline",:controller=>"friendships",id: requests.id }, method: :delete, class: 'btn btn-primary' %>
+<%= link_to 'Cancel', {action: "decline",:controller=>"friendships",user_id: requests.user.id}, method: :delete, class: 'btn btn-primary' %>
 <%end%>
 <%end%>
 </div>

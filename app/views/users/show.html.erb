@@ -12,7 +12,7 @@
           <%show_pending%>
           <% if @pending%>
           <% @pending.each do |pending|%>
-            <p class="friend-already">pending friended request <%= link_to 'Cancel', {action: "decline",:controller=>"friendships",id: pending.id }, method: :delete, class: 'btn btn-primary' %></p> 
+            <p class="friend-already">pending friended request <%= link_to 'Cancel', {action: "decline",:controller=>"friendships",user_id: pending.user.id }, method: :delete, class: 'btn btn-primary' %></p> 
          <%end%>
          <%end%>
           </span>

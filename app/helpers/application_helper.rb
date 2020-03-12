@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def show_pending
-    @pending = Friendship.where(user_id: current_user.id, status: false)
+    @pending = Friendship.where(user_id: current_user.id) 
   end
 
   def show_friend_request(user)
