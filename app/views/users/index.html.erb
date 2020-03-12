@@ -1,31 +1,56 @@
 <div class="container">
-<div class="row">
-<div class="col-md-12">
-<section class="users-section">
-  <ul class="users-list">
-    <% @users.each do |user| %>
-      <li>
-        Name: <%= user.name %>
-        <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-        </span>
-        <% if show_friend_request user %>
-          <span class="friend-request-link">
-            <p><%= link_to 'Send Friend Request', {action: "send_request",:controller=>"friendships",friend_id: user.id }, method: :post, class: 'btn btn-primary' %></p>
-          </span>
-        <% elsif pending_friend user %>
-          <span class="friend-request-link">
-            <p class="friend-already">pending friended request <%= link_to 'Cancel', {action: "decline",:controller=>"friendships",friend_id: user.id }, method: :delete, class: 'btn btn-primary' %></p> 
-          </span>
-        <% elsif already_friend user %>
-          <span class="friend-request-link">
-            <p class="friend-already">already friended</p>
-          </span>
-        <%end %>
-      </li>
-    <% end %>
-  </ul>
-</section>
-</div>
-</div>
+  <div class="row">
+    <div class="col-md-12">
+      <section class="users-section">
+        <ul class="users-list">
+          <% @users.each do |user| %>
+          <li>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  Name: <%= user.name %>
+                  <span class="profile-link">
+                    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+                  </span>
+                </div>
+                <div class="col-md-6">
+                  <% if show_friend_request user %>
+                  <span>
+                    <p>
+                      <%= link_to 'Send Friend Request', {action: "send_request",:controller=>"friendships",friend_id: user.id }, method: :post, class: 'btn btn-primary' %>
+                    </p>
+                  </span>
+                  <% elsif pending_friend user %>
+                  <span>
+                    <%show_pending%>
+                    <% if @pending%>
+                    <% @pending.each do |pending|%>
+                    <p>Pending request
+                      <%= link_to 'Cancel', {action: "decline",:controller=>"friendships",id: pending.id }, method: :delete, class: 'btn btn-primary' %>
+                    </p>
+                    <%end%>
+                    <%end%>
+
+                  </span>
+                  <% elsif already_friend user %>
+                  <span>
+                    <%show_pending%>
+                    <% if @pending%>
+                    <% @pending.each do |pending|%>
+                    <p>Already Friend
+                      <%= link_to 'Unfriend', {action: "decline",:controller=>"friendships",id: pending.id }, method: :delete, class: 'btn btn-primary' %>
+                    </p>
+                    <%end%>
+                    <%end%>
+                    <%end%>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+      </section>
+    </div>
+  </div>
 </div>
