@@ -12,11 +12,11 @@
           <%show_pending%>
           <% if @pending%>
           <% @pending.each do |pending|%>
-            <p class="friend-already">pending friended request <%= link_to 'Cancel', {action: "decline",:controller=>"friendships",user_id: pending.user.id }, method: :delete, class: 'btn btn-primary' %></p>
+            <p class="friend-already">pending friended request <%= link_to 'Cancel', {action: "decline",:controller=>"friendships",user_id: pending.friend.id }, method: :delete, class: 'btn btn-primary' %></p>
          <%end%>
          <%end%>
           </span>
-        <% elsif already_friend @user %>
+        <% elsif friends %>
           <span class="friend-request-link">
             <p class="friend-already">already friended</p>
           </span>
@@ -35,9 +35,9 @@
     <article class="friend-list">
     <h3>Friend List</h3>
     <ul class="f-list">
-      <% @friends.each do |f|%>
-        <li class="f-item"> <%= f.user.name %> </li>
-      <% end %>
+      <% @user.friendships.each do |f|%>
+        <li class="f-item"> <%= f.friend.name %> </li>
+    
     </ul>
     </article>
   </div>
@@ -45,11 +45,12 @@
     <article class="friend-list">
     <h3>Mutal Friend List</h3>
     <ul class="f-list">
-      <% show_mutal_friends(@user)%>
-      <% @mutals.each do |f|%>
-        <% if f != current_user %>
-          <li class="f-item"> <%= f.name %> </li>
-        <% end %>
+      <% show_mutual_friends(f.friend)%>
+      <%if @mutual%>
+      <% @mutual.each do |f| %>
+          <li class="f-item"> <%= f.friend.name %> </li>
+          <%end%>
+      <%end%>
       <% end %>
     </ul>
     </article>

@@ -20,20 +20,12 @@ module ApplicationHelper
     @pending = Friendship.where(user_id: current_user.id,status:false)
   end
   def friends
-    @friend = Friendship.where(user_id: current_user.id,status:true)
+    @friends = current_user.friendships.where(status:true)
   end
 
-  def show_mutal_friends(user)
-    first = user.friends
-    second = current_user.friends
-
-    if first && second
-      @mutals =  first & second
-    end
-  end
-
-  def show_requests
-    @request = inverse_friends.where(frined_id: current_user.id, status: false)
+  def show_mutual_friends(user)
+      @mutual = current_user.friendships.includes(:user)
+    
   end
 
   def show_friend_request(user)

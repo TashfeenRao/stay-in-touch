@@ -2,20 +2,16 @@
   <div class="row">
     <div class="col-md-4">
       <h2>Requests List</h2>
-      <%if @friends%>
       <ul class="list-group list-group-flush">
-          <%  current_user.inverse_friends.each do |f|%>
-       
+          <% #current_user.inverse_friendships.each do |f|%>
+           <% show_requests.each do |request|%>
             <li class="list-group-item">
-              <%= f.name%>
-              <%= f.id%>
-              <% #link_to 'Accept', {action: "accept",:controller=>"friendships",user_id: @request.id }, method: :post, class: 'btn btn-primary' %>
-              <% #link_to 'Decline', {action: "decline",:controller=>"friendships",user_id: @request.id }, method: :delete, class: 'btn btn-primary' %>
+            <%= request.name%>
+              <%= link_to 'Accept', {action: "accept",:controller=>"friendships",user_id: request.id }, method: :post, class: 'btn btn-primary' %>
+              <%= link_to 'Decline', {action: "decline",:controller=>"friendships",user_id: request.id }, method: :delete, class: 'btn btn-primary' %>
             </li>
-            
-          <%end%>
         </ul>
-      <%end%>
+        <%end%>
     </div>
     <div class="col-md-4">
       <h2>Pending Request</h2>
