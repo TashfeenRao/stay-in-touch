@@ -24,12 +24,11 @@ module ApplicationHelper
   end
 
   def show_mutal_friends(user)
-    first = Friendship.where(user_id:current_user.id,
-                      friend_id:user.id,status: true)
-    second = Friendship.where(user_id:user.id,
-                      friend_id:current_user.id,status:true)
+    first = user.friends
+    second = current_user.friends
+
     if first && second
-      @mutals =  first+second
+      @mutals =  first & second
     end
   end
 

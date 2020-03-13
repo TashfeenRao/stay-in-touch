@@ -47,8 +47,8 @@
     <ul class="f-list">
       <% show_mutal_friends(@user)%>
       <% @mutals.each do |f|%>
-        <% if f.user != current_user %>
-          <li class="f-item"> <%= f.user.id %> <%= f.user.name %> </li>
+        <% if f != current_user %>
+          <li class="f-item"> <%= f.name %> </li>
         <% end %>
       <% end %>
     </ul>
