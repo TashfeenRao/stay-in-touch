@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/send_request', to: 'friendships#send_request'
   post '/requests', to: 'friendships#accept'
   delete '/requests', to: 'friendships#decline'
-  get '/requests', to: 'friendships#show_requests'
+  get '/requests', to: 'friendships#show'
 
   resources :users, only: [:index, :show]
   resources :posts, only: [:index, :create] do

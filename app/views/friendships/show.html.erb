@@ -1,39 +1,42 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <%if @request%>
-      <h1>Requests List</h1>
+      <h2>Requests List</h2>
+      <%if @friends%>
       <ul class="list-group list-group-flush">
-          <%@request.each do |requests|%>
+          <%  current_user.inverse_friends.each do |f|%>
+       
             <li class="list-group-item">
-              <%= requests.user.name%>
-              <%= link_to 'Accept', {action: "accept",:controller=>"friendships",user_id: requests.user.id }, method: :post, class: 'btn btn-primary' %>
-              <%= link_to 'Decline', {action: "decline",:controller=>"friendships",user_id: requests.user.id }, method: :delete, class: 'btn btn-primary' %>
+              <%= f.name%>
+              <%= f.id%>
+              <% #link_to 'Accept', {action: "accept",:controller=>"friendships",user_id: @request.id }, method: :post, class: 'btn btn-primary' %>
+              <% #link_to 'Decline', {action: "decline",:controller=>"friendships",user_id: @request.id }, method: :delete, class: 'btn btn-primary' %>
             </li>
+            
           <%end%>
         </ul>
       <%end%>
     </div>
     <div class="col-md-4">
+      <h2>Pending Request</h2>
       <%show_pending%>
       <%if @pending%>
-      <h2>Friends List</h2>
       <ul class="list-group list-group-flush">
       <%@pending.each do |requests|%>
         <li class="list-group-item">
           <%= requests.friend.name%>
-          <%= link_to 'Unfriend', {action: "decline",:controller=>"friendships",user_id: requests.friend.id}, method: :delete, class: 'btn btn-primary' %>
+          <%= link_to 'Cancel', {action: "decline",:controller=>"friendships",user_id: requests.friend.id}, method: :delete, class: 'btn btn-primary' %>
         </li>
       <%end%>
       </ul>
       <%end%>
     </div>
     <div class="col-md-4">
-      <%show_pending%>
-      <%if @pending%>
-      <h2>Mutal Friends List</h2>
+      <h2>Friends List</h2>
+      <%friends%>
+      <%if @friends%>
       <ul class="list-group list-group-flush">
-      <%@pending.each do |requests|%>
+      <%@friends.each do |requests|%>
         <li class="list-group-item">
           <%= requests.friend.name%>
           <%= link_to 'Unfriend', {action: "decline",:controller=>"friendships",user_id: requests.friend.id}, method: :delete, class: 'btn btn-primary' %>

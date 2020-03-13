@@ -17,7 +17,10 @@ module ApplicationHelper
   end
 
   def show_pending
-    @pending = Friendship.where(user_id: current_user.id,status: true)
+    @pending = Friendship.where(user_id: current_user.id,status:false)
+  end
+  def friends
+    @friend = Friendship.where(user_id: current_user.id,status:true)
   end
 
   def show_mutal_friends(user)
@@ -28,6 +31,10 @@ module ApplicationHelper
     if first && second
       @mutals =  first+second
     end
+  end
+
+  def show_requests
+    @request = inverse_friends.where(frined_id: current_user.id, status: false)
   end
 
   def show_friend_request(user)

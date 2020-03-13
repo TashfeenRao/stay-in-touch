@@ -30,7 +30,7 @@ class FriendshipsController < ApplicationController
     redirect_to requests_path, notice: 'You Decline request'
   end
 
-  def show_requests
-    @request = Friendship.where(friend_id: current_user.id, status: false)
+  def show
+    @friends = Friendship.all
   end
 end
