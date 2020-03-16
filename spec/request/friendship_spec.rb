@@ -6,7 +6,6 @@ RSpec.feature 'Friendships', type: :feature do
     @user2 = User.create(name: 'Nyan', email: 'n@mail.com', password: '123456')
     @user3 = User.create(name: 'User', email: 'u@mail.com', password: '123456')
     @friendship = Friendship.create(user_id: @user2.id, friend_id: @user.id, status: false)
-    @friendship2 = Friendship.create(user_id: @user3.id, friend_id: @user.id, status: false)
   end
 
   scenario 'click friend request invite send' do
@@ -31,13 +30,15 @@ RSpec.feature 'Friendships', type: :feature do
     click_button 'Log in'
     expect(find('.notice')).to have_content('Signed in successfully.')
     visit requests_path
-    expect(find('h1').text).to have_content('Requests List')
+    expect(find(class: 'req').text).to have_content('Requests List')
     assert_selector 'ul' do
       assert_selector 'li'
       find_link('Accept', match: :first).visible?
       click_link('Accept', match: :first)
     end
     expect(find('.notice')).to have_content('You accepted request')
+    revers_freindship = @user.friendships.find_by(friend_id: @user2.id)
+    expect(revers_freindship.status).to be true
   end
 
   scenario 'cancel friend request' do
@@ -47,7 +48,7 @@ RSpec.feature 'Friendships', type: :feature do
     click_button 'Log in'
     expect(find('.notice')).to have_content('Signed in successfully.')
     visit requests_path
-    expect(find('h1').text).to have_content('Requests List')
+    expect(find(class: 'req').text).to have_content('Requests List')
     assert_selector 'ul' do
       assert_selector 'li'
       find_link('Decline', match: :first).visible?

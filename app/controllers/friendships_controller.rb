@@ -21,7 +21,7 @@ class FriendshipsController < ApplicationController
     decline2 = current_user.inverse_friendships.find_by(user_id: params[:user_id])
     if decline1.nil?
       decline2.destroy
-      redirect_to requests_path, notice: 'You Decline request'
+      redirect_to requests_path, notice: 'You decline request'
     elsif decline2.nil?
       decline1.destroy
       redirect_to requests_path, notice: 'You Cancel request'
