@@ -2,8 +2,8 @@ class FriendshipsController < ApplicationController
   before_action :authenticate_user!
   def send_request
     friendship1 = Friendship.create(user_id: current_user.id,
-                                   friend_id: params[:friend_id],
-                                   status: false)
+                                    friend_id: params[:friend_id],
+                                    status: false)
     redirect_to users_path, notice: 'Send your friend request successfully' if friendship1.save
   end
 
@@ -12,7 +12,7 @@ class FriendshipsController < ApplicationController
     return unless accept1
 
     accept1.update(status: true)
-    current_user.friendships.create(friend_id: params[:user_id],status:true)
+    current_user.friendships.create(friend_id: params[:user_id], status: true)
     redirect_to requests_path, notice: 'You accepted request'
   end
 
@@ -26,11 +26,11 @@ class FriendshipsController < ApplicationController
       decline1.destroy
       redirect_to requests_path, notice: 'You Cancel request'
     else
-    return unless decline1 && decline2
+      return unless decline1 && decline2
 
-    decline1.destroy
-    decline2.destroy
-    redirect_to requests_path, notice: 'You Decline request'
+      decline1.destroy
+      decline2.destroy
+      redirect_to requests_path, notice: 'You Decline request'
     end
   end
 

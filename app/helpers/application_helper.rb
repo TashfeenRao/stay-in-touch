@@ -16,18 +16,6 @@ module ApplicationHelper
     end
   end
 
-  def show_pending
-    @pending = Friendship.where(user_id: current_user.id,status:false)
-  end
-  def friends
-    @friends = current_user.friendships.where(status:true)
-  end
-
-  def show_mutual_friends(user)
-      @mutual = current_user.friendships.includes(:user)
-    
-  end
-
   def show_friend_request(user)
     friendship = Friendship.find_by(user_id: current_user.id,
                                     friend_id: user.id)
