@@ -15,7 +15,8 @@ class User < ApplicationRecord
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      if data == session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info']
+      data = session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info']
+      if data
         user.email = data['email'] if user.email.blank?
       end
     end
@@ -28,29 +29,5 @@ class User < ApplicationRecord
       user.name = auth.info.name # assuming the user model has a name
       user.gravatar_url = auth.info.image # assuming the user model has an image
     end
-  end
-
-  def show_requests
-    @request = current_user.inverse_friendships.where(status: false)
-  end
-
-  def show_pending
-    @pending = current_user.friendships.where(status: false)
-  end
-
-  def friends
-    @friend = current_user.friendships.where(status: true)
-  end
-
-  def user_friends(user)
-    user.friendships.where(status: true)
-  end
-
-  def show_mutual_friends(user)
-    u1 = user.friendships.find_by(status: true)
-    u2 = current_user.friendships.find_by(status: true)
-    return if u1.nil? || u2.nil?
-
-    @mutual = u1 if u1.friend_id == u2.friend_id
   end
 end
