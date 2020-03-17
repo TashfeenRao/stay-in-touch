@@ -1,9 +1,46 @@
+<div class="container">
+<div class="row">
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+    <article class="friend-list">
+       <% if show_friend_request @user %>
+          <span class="friend-request-link">
+            <p><%= link_to 'Send Friend Request', {action: "send_request",:controller=>"friendships",friend_id: @user.id }, method: :post, class: 'btn btn-primary' %></p>
+          </span>
+        <% elsif pending_friend @user %>
+          <span class="friend-request-link">
+          <%show_pending%>
+          <% if @pending%>
+          <% @pending.each do |pending|%>
+            <p class="friend-already">pending friended request <%= link_to 'Cancel', {action: "decline",:controller=>"friendships",id: pending.id }, method: :delete, class: 'btn btn-primary' %></p> 
+         <%end%>
+         <%end%>
+          </span>
+        <% elsif already_friend @user %>
+          <span class="friend-request-link">
+            <p class="friend-already">already friended</p>
+          </span>
+        <%end %>
+        </article>
+<div class="col-md-8">
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
   </article>
+</div>
+<div class="col-md-4">
+  <article class="friend-list">
+    <h3>Friend List</h3>
+    <ul class="f-list">
+      <% @friends.each do |f|%>
+        <li class="f-item"> <%= f.user.name %> </li>
+      <% end %>
+    </ul>
+  </article>
+  </div>
 </section>
+</div>
+</div>
+</div>
