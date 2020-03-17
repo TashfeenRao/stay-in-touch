@@ -1,0 +1,7 @@
+<% show_requests.each do |request|%>
+<li class="list-group-item">
+  <%= request.user.name%>
+  <%= link_to 'Accept', {action: "accept",:controller=>"friendships",user_id: request.user.id }, method: :post, class: 'btn btn-primary' %>
+  <%= link_to 'Decline', {action: "decline",:controller=>"friendships",user_id: request.user.id }, method: :delete, class: 'btn btn-primary' %>
+</li>
+<%end%>
