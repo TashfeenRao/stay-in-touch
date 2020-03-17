@@ -10,7 +10,7 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '67b47cf7eb7cd1b67d9057fd21fcbfbae6aebc2d4942449010ff41764e611cc93640784e5a674c21fd1c48017cf0e41a64e2d5f4030e4b7d3fedb425189e5cb6'
   config.omniauth :facebook, "548226232462853", "d279eb6fdc1550564f4b65c1859df908",
-  callback_url: "http://localhost:3000/users/auth/facebook/callback"
+  callback_url: "https://tashstay.herokuapp.com/users/auth/facebook/callback"
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
