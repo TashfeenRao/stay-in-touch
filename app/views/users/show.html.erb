@@ -1,9 +1,39 @@
-<section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
-  <article class="timeline">
-    <h3>Recent posts:</h3>
-    <ul class="posts">
-      <%= render @posts %>
-    </ul>
-  </article>
-</section>
+<div class="container">
+  <div class="row">
+    <section class="user-section">
+      <h2><%= "Name: #{@user.name}" %></h2>
+      <article class="friend-list">
+        <%= render 'user_show'%>
+      </article>
+      <div class="col-md-8">
+        <article class="timeline">
+          <h3>Recent posts:</h3>
+          <ul class="posts">
+            <%= render @posts %>
+          </ul>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+          <article class="friend-list">
+            <h3>Friend List</h3>
+            <ul class="f-list">
+              <%= render 'friendships/friends'%>
+            </ul>
+          </article>
+        </div>
+        <div class="row">
+          <article class="friend-list">
+            <h3>Mutal Friend List</h3>
+            <ul class="f-list">
+            <%if @mutual%>
+              <% show_mutual_friends(@user) %>
+              <%= render 'friendships/friendship'%>
+              <%end%>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

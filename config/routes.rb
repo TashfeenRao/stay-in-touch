@@ -2,7 +2,13 @@ Rails.application.routes.draw do
 
   root 'posts#index'
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+
+  post '/send_request', to: 'friendships#send_request'
+  post '/requests', to: 'friendships#accept'
+  delete '/requests', to: 'friendships#decline'
+  get '/requests', to: 'friendships#show'
 
   resources :users, only: [:index, :show]
   resources :posts, only: [:index, :create] do

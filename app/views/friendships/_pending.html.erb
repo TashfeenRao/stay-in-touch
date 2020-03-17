@@ -1,0 +1,8 @@
+<% if @pending%>
+<%show_pending.each do |requests|%>
+<li class="list-group-item">
+  <%= requests.friend.name%>
+  <%= link_to 'Cancel', {action: "decline",:controller=>"friendships",user_id: requests.friend.id}, method: :delete, class: 'btn btn-primary' %>
+</li>
+<%end%>
+<%end%>

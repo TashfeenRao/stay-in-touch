@@ -1,0 +1,22 @@
+<% if show_friend_request @user %>
+<span class="friend-request-link">
+    <p>
+        <%= link_to 'Send Friend Request', {action: "send_request",:controller=>"friendships",friend_id: @user.id }, method: :post, class: 'btn btn-primary' %>
+    </p>
+</span>
+<% elsif pending_friend @user %>
+<span class="friend-request-link">
+    <%show_pending%>
+    <% if @pending%>
+    <% @pending.each do |pending|%>
+    <p class="friend-already">pending friended request
+        <%= link_to 'Cancel', {action: "decline",:controller=>"friendships",user_id: pending.friend.id }, method: :delete, class: 'btn btn-primary' %>
+    </p>
+    <%end%>
+    <%end%>
+</span>
+<% elsif @friend %>
+<span class="friend-request-link">
+    <p class="friend-already">already friended</p>
+</span>
+<%end %>
