@@ -18,9 +18,7 @@
           <article class="friend-list">
             <h3>Friend List</h3>
             <ul class="f-list">
-              <% user_friends(@user).each do |f|%>
-              <%= f.friend.name%>
-              <%end%>
+              <%= render 'friendships/friends'%>
             </ul>
           </article>
         </div>
@@ -28,8 +26,10 @@
           <article class="friend-list">
             <h3>Mutal Friend List</h3>
             <ul class="f-list">
+            <%if @mutual%>
               <% show_mutual_friends(@user) %>
               <%= render 'friendships/friendship'%>
+              <%end%>
             </ul>
           </article>
         </div>
