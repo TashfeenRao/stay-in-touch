@@ -9,8 +9,7 @@
 
 ## Live Demo
 
-TBA
-
+`https://tashstay.herokuapp.com/`
 
 ## Getting Started
 
@@ -37,8 +36,6 @@ Setup database with:
    rails db:migrate
 ```
 
-
-
 ### Usage
 
 Start server with:
@@ -48,6 +45,7 @@ Start server with:
 ```
 
 Open `http://localhost:3000/` in your browser.
+Open `https://tashstay.herokuapp.com/` in your browser.
 
 ### Run tests
 
@@ -59,12 +57,12 @@ Open `http://localhost:3000/` in your browser.
 
 ### Deployment
 
-TBA
+`https://tashstay.herokuapp.com/`
 
 ## Authors
 
 Tashfeen Rao `https://github.com/TashfeenRao`
-Ko Nyan       `https://github.com/konyan`
+Ko Nyan `https://github.com/konyan`
 
 ## 🤝 Contributing
 
@@ -78,9 +76,9 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+Microverse
+Heroku
 
 ## 📝 License
 
 TBA
-
