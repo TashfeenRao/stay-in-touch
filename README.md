@@ -1,6 +1,6 @@
-# Scaffold for social media app with Ruby on Rails
+# Stay In Touch
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This is a social app.User can create his account by providing name email and password. he can login with facebook credentials. In the app functionality he can post he can comment on posts. he can add friends and can see friends posts.
 
 ## Built With
 
