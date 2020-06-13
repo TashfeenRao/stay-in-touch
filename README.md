@@ -1,5 +1,6 @@
-# Stay In Touch
-
+<h1 align="center">
+  Stay In Touch
+</h1>
 > This is a social app.User can create his account by providing name email and password. he can login with facebook credentials. In the app functionality he can post he can comment on posts. he can add friends and can see friends posts.
 
 ## Built With
@@ -7,9 +8,13 @@
 - Ruby v2.6.5
 - Ruby on Rails v5.2.4
 
+## Screen Shots
+![screenshot](screencapture-tashstay-herokuapp-posts-2020-06-13-19_21_54.png)
+![screenshot](screencapture-tashstay-herokuapp-users-2020-06-13-19_22_37.png)
+
 ## Live Demo
 
-`https://tashstay.herokuapp.com/`
+https://tashstay.herokuapp.com/
 
 ## Getting Started
 
@@ -81,4 +86,4 @@ Heroku
 
 ## 📝 License
 
-TBA
+MIT
