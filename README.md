@@ -1,7 +1,7 @@
 <h1 align="center">
   Stay In Touch
 </h1>
-> This is a social app.User can create his account by providing name email and password. he can login with facebook credentials. In the app functionality he can post he can comment on posts. he can add friends and can see friends posts.
+> This is a social app. User can create his account by providing name email and password. he can log in with Facebook credentials. In the app functionality, he can post he can comment on posts. he can add friends and can see friends posts.
 
 ## Built With
 
@@ -87,3 +87,14 @@ Heroku
 ## 📝 License
 
 MIT
+
+
+[Tashfeen Rao](https://tashfeenrao.github.io/personal-portfolio/) &nbsp;&middot;&nbsp;
+</br>
+Email: tashfeendev@gmail.com &nbsp;&middot;&nbsp;
+</br>
+AngelList [TashfeenRao](https://angel.co/u/tashfeen-rao) &nbsp;&middot;&nbsp;
+</br>
+LinkedIn [Tashfeen Rao](https://www.linkedin.com/in/tashfeen-rao/) &nbsp;&middot;&nbsp;
+</br>
+Twitter [@TashfeenDev](https://twitter.com/TashfeenDev) &nbsp;&middot;&nbsp;
