@@ -10,7 +10,6 @@
 
 ## Screen Shots
 ![screenshot](screencapture-tashstay-herokuapp-posts-2020-06-13-19_21_54.png)
-![screenshot](screencapture-tashstay-herokuapp-users-2020-06-13-19_22_37.png)
 
 ## Live Demo
 
