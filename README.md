@@ -1,7 +1,7 @@
 <h1 align="center">
   Stay In Touch
 </h1>
-> This is a social app. User can create his account by providing name email and password. he can log in with Facebook credentials. In the app functionality, he can post he can comment on posts. he can add friends and can see friends posts.
+ This is a social app. User can create his account by providing name email and password. he can log in with Facebook credentials. In the app functionality, he can post he can comment on posts. he can add friends and can see friends posts.
 
 ## Built With
 
