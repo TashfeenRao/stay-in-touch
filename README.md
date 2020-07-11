@@ -33,7 +33,7 @@
 * User can add friends
 * User can send/cancel friend request
 * User can write post
-* User can like/comment on post
+* User can like/comment on the post
 
 ## How To Use
 
@@ -48,7 +48,7 @@ $ cd stay-in-touch
 $ bundle install
 
 # Run the app
-$ rails serve
+$ rails server
 ```
 
 ## Screen Shot
